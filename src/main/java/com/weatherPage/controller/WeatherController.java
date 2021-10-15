@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping(path = "api/v1/weather")
+@RequestMapping(path = "/api/v1/weather")
 public class WeatherController {
 
     private final WeatherService weatherService;

@@ -19,7 +19,7 @@ public class WeatherController {
     }
 
 
-    @RequestMapping()
+    @GetMapping()
     public CityInformationResponse getCityInformation(@RequestParam("city") String city) throws JsonProcessingException {
         return weatherService.getCityInformation(city);
     }

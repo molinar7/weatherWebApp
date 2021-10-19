@@ -29,7 +29,7 @@ public class WeatherService {
 
     public CityInformationResponse getCityInformation(final String city) throws JsonProcessingException {
 
-        UriComponentsBuilder uri = UriComponentsBuilder.fromHttpUrl("https://api.openweathermap.org/data/2.5/weather");
+        UriComponentsBuilder uri = UriComponentsBuilder.fromHttpUrl(Constants.API_URL);
         uri.queryParam("q", city);
         uri.queryParam("appid", Constants.API_KEY);
         uri.queryParam("units", Constants.CELCIUS);

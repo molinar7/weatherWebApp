@@ -1,0 +1,17 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head> 
+    <title>Weather</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>Weather</h1>
+    <p th:text="'City: ' + ${cityInformationResponse.cityName}" />
+    <p th:text="'Date: ' + ${cityInformationResponse.todayDate}" />
+    <p th:text="'Description: ' + ${cityInformationResponse.overallDescription}" />
+    <p th:text="'Temperature: ' + ${cityInformationResponse.temperature}" />
+    <p th:text="'Sunrise: ' + ${cityInformationResponse.sunriseTime}" />
+    <p th:text="'Sunset: ' + ${cityInformationResponse.sunsetTime}" />
+    <a href="/weather">Check another City</a>
+</body>
+</html>

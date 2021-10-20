@@ -1,28 +1,33 @@
 package com.weatherPage.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.weatherPage.dto.CityInformationRequest;
 import com.weatherPage.dto.CityInformationResponse;
 import com.weatherPage.service.WeatherService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
-
-@RestController
-@RequestMapping(path = "/api/v1/weather")
+@Controller
 public class WeatherController {
 
-    private final WeatherService weatherService;
-
     @Autowired
-    public WeatherController(WeatherService weatherService) {
-        this.weatherService = weatherService;
+    WeatherService weatherService;
+
+
+    @GetMapping("/weather")
+    public String greetingForm(Model model) {
+        model.addAttribute("city", new CityInformationRequest());
+        return "weatherForm";
     }
 
-
-    @GetMapping()
-    public CityInformationResponse getCityInformation(@RequestParam("city") String city) throws JsonProcessingException {
-        return weatherService.getCityInformation(city);
+    @PostMapping("/weather")
+    public String greetingSubmit(@ModelAttribute CityInformationRequest cityInformationRequest, Model model) throws JsonProcessingException {
+        CityInformationResponse cityInformationResponse  = weatherService.getCityInformation(cityInformationRequest.getCityName());
+        model.addAttribute("cityInformationResponse", cityInformationResponse);
+        return "weatherInformation";
     }
-
-
 }

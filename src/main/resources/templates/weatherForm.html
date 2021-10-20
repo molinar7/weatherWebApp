@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Weather</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Weather</h1>
+<form action="#" th:action="@{/weather}" th:object="${city}" method="post">
+    <p>
+        City:
+        <select th:field="*{cityName}">
+            <option value="Chihuahua">Chihuahua</option>
+            <option value="Chennai">Chennai</option>
+            <option value="London">London</option>
+            <option value="Hong Kong">Hong Kong</option>
+        </select>
+    </p>
+    <p>
+        <input type="submit" value="Submit" />
+    </p>
+</form>
+</body>
+</html>

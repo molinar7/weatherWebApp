@@ -30,7 +30,6 @@ public class WeatherServiceImpl implements WeatherService {
     private String apiKey;
     private String celsius;
 
-
     @Bean
     public RestTemplate restTemplate() {
         return new RestTemplate();

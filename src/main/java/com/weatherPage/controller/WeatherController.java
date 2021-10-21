@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.thymeleaf.util.StringUtils;
 
 @Controller
 public class WeatherController {
@@ -26,8 +27,15 @@ public class WeatherController {
 
     @PostMapping("/weather")
     public String greetingSubmit(@ModelAttribute CityInformationRequest cityInformationRequest, Model model) throws JsonProcessingException {
-        CityInformationResponse cityInformationResponse  = weatherService.getCityInformation(cityInformationRequest.getCityName());
+
+        CityInformationResponse cityInformationResponse = new CityInformationResponse();
+
+        if(!StringUtils.isEmpty(cityInformationRequest.getCityName())){
+            cityInformationResponse = weatherService.getCityInformation(cityInformationRequest.getCityName());
+        }
+
         model.addAttribute("cityInformationResponse", cityInformationResponse);
+
         return "weatherInformation";
     }
 }

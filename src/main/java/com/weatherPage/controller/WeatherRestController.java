@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 public class WeatherRestController {
 
     @Autowired
-     WeatherService weatherService;
+    WeatherService weatherService;
 
 
     @GetMapping()

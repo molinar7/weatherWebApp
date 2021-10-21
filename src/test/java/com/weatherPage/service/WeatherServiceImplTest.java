@@ -13,7 +13,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 @SpringBootTest
 @RunWith(SpringJUnit4ClassRunner.class)
-class WeatherServiceTest {
+class WeatherServiceImplTest {
 
 
     @MockBean

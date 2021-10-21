@@ -2,7 +2,7 @@ package com.weatherPage.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.weatherPage.dto.CityInformationResponse;
-import com.weatherPage.service.WeatherService;
+import com.weatherPage.service.WeatherServiceImpl;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -20,7 +20,7 @@ class WeatherRestControllerTest {
 
 
     @MockBean
-    private WeatherService weatherService;
+    private WeatherServiceImpl weatherService;
 
     @Test
     public void getCityInformationWithRestTemplateTest() throws JsonProcessingException {

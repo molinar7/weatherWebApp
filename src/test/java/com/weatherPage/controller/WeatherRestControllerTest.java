@@ -2,6 +2,7 @@ package com.weatherPage.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.weatherPage.dto.CityInformationResponse;
+import com.weatherPage.dto.Error;
 import com.weatherPage.service.WeatherServiceImpl;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
@@ -37,6 +38,17 @@ class WeatherRestControllerTest {
         Mockito.when(this.weatherService.getCityInformation("Chihuahua")).thenReturn(chihuahuaResponse);
         CityInformationResponse result = this.weatherService.getCityInformation("Chihuahua");
         Assert.assertEquals(result, chihuahuaResponse);
+    }
+
+    @Test
+    public void getCityInformationWithErrorsTest() throws JsonProcessingException {
+        CityInformationResponse errorResponse = new CityInformationResponse()
+                .setError(new Error("Internal Error", "500"));
+
+
+        Mockito.when(this.weatherService.getCityInformation("Chihuahua")).thenReturn(errorResponse);
+        CityInformationResponse result = this.weatherService.getCityInformation("Chihuahua");
+        Assert.assertEquals(result, errorResponse);
     }
 
 

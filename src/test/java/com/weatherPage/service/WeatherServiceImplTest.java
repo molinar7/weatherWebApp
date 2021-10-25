@@ -32,4 +32,17 @@ class WeatherServiceImplTest {
         Assert.assertEquals(resultJson,"{\"todayDate\":\"2021-10-19\",\"cityName\":\"Chihuahua\",\"overallDescription\":\"broken clouds\",\"temperature\":\"27.09c\",\"sunriseTime\":\"1634648832\",\"sunsetTime\":\"1634689816\",\"error\":null}");
     }
 
+    @Test
+    public void getCityInformationWithErrorsTest() {
+
+        UriComponentsBuilder uri = UriComponentsBuilder.fromHttpUrl("https://api.openweathermap.org/data/2.5/weather");
+        uri.queryParam("q", "Chihuahua");
+        uri.queryParam("appid", "0972a546221a36585c5e3de778b00ebc");
+        uri.queryParam("units", "METRIC");
+
+        Mockito.when(this.restTemplate.getForObject(uri.toUriString(), String.class)).thenReturn("{error: {errorMessage: Internal Error, errorCode: 500}}");
+        String resultJson =  this.restTemplate.getForObject(uri.toUriString(), String.class);
+        Assert.assertEquals(resultJson,"{error: {errorMessage: Internal Error, errorCode: 500}}");
+    }
+
 }

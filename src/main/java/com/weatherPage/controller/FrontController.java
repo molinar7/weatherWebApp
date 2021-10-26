@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.thymeleaf.util.StringUtils;
 
 @Controller
-public class WeatherController {
+public class FrontController {
 
     @Autowired
     WeatherService weatherService;
@@ -21,7 +21,7 @@ public class WeatherController {
 
     @GetMapping("/weather")
     public String greetingForm(Model model) {
-        model.addAttribute("city", new CityInformationRequest());
+        model.addAttribute("cityInformationRequest", new CityInformationRequest());
         return "weatherForm";
     }
 

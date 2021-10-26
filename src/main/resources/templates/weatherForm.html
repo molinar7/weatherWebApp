@@ -6,7 +6,7 @@
 </head>
 <body>
 <h1>Weather</h1>
-<form action="#" th:action="@{/weather}" th:object="${city}" method="post">
+<form action="#" th:action="@{/weather}" th:object="${cityInformationRequest}" method="post">
     <p>
         City:
         <select th:field="*{cityName}">
